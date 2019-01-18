@@ -96,6 +96,8 @@ class MainHeader extends Reflux.Component {
   renderAccountNavMenu () {
     var langs = [];
 
+    return ('');
+
     if (stores.session.currentAccount) {
       var accountName = stores.session.currentAccount.username;
       var accountEmail = stores.session.currentAccount.email;

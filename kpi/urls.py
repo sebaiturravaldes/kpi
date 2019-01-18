@@ -30,6 +30,7 @@ from kpi.views import home, one_time_login, browser_tests
 from kobo.apps.reports.views import ReportsViewSet
 from kobo.apps.superuser_stats.views import user_report, retrieve_user_report
 from kpi.views import authorized_application_authenticate_user
+from kpi.views import custom_login
 from kpi.forms import RegistrationForm
 from hub.views import switch_builder
 from hub.models import ConfigurationFile
@@ -93,6 +94,7 @@ js_info_dict = {
 }
 
 urlpatterns = [
+    url(r'^login/$', custom_login),
     url(r'^$', home, name='kpi-root'),
     url(r'^me/$', CurrentUserViewSet.as_view({
         'get': 'retrieve',

@@ -9,6 +9,7 @@ import datetime
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
 from django.db import transaction
 from django.db.models import Q, Count
 from django.forms import model_to_dict
@@ -321,6 +322,28 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
         else:
             return TagSerializer
 
+@api_view(["GET"])
+def custom_login(request):
+    username = request.GET.get("username")
+    password = request.GET.get("password")
+
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response({"error": "Login Failed"})
+
+    request.session.set_expiry(86400)  # sets the exp. value of the session
+    login(request, user)  # the user is now logged in
+
+    return HttpResponseRedirect(redirect_to='/')
+    #token, _ = Token.objects.get_or_create(user=user)
+    #return Response({"token": token.key})
+
+class CustomLoginViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = CreateUserSerializer
+    queryset = User.objects.all()
 
 class UserViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     """
