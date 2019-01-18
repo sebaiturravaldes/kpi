@@ -35,8 +35,8 @@ $headerAccountTextColor: #dbedf7;
   }
 
   .header__logo {
-    width: 175px;
-    height: 40px;
+    width: 190px;
+    height: 51px;
     background: url("../img/kobologo.svg") no-repeat left bottom;
     background-size: contain;
     display: block;
@@ -99,17 +99,17 @@ $headerAccountTextColor: #dbedf7;
 
   .search {
     ::-webkit-input-placeholder {
-      color: #FFF;
+      color: #575757;
     }
 
     :-ms-input-placeholder {
-      color: #FFF;
+      color: #575757;
     }
 
     .k-search__input {
-      color: #FFF;
-      border: none;
-      border-radius: 0px;
+      color: #575757;
+      border-radius: 0;
+      border: 1px solid #DDDDDD;
       padding: 10px 12px;
       padding-left: 42px;
       background-color: rgba(255, 255, 255, 0.1);
@@ -124,7 +124,7 @@ $headerAccountTextColor: #dbedf7;
       position: absolute;
       top: 11px;
       left: 12px;
-      color: #FFF;
+      color: $black;
 
       &:before {
         font-size: 18px;

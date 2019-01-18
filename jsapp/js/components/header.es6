@@ -168,16 +168,7 @@ class MainHeader extends Reflux.Component {
   renderGitRevInfo () {
     if (stores.session.currentAccount && stores.session.currentAccount.git_rev) {
       var gitRev = stores.session.currentAccount.git_rev;
-      return (
-        <bem.GitRev>
-          <bem.GitRev__item>
-            branch: {gitRev.branch}
-          </bem.GitRev__item>
-          <bem.GitRev__item>
-            commit: {gitRev.short}
-          </bem.GitRev__item>
-        </bem.GitRev>
-      );
+      return ('');
     }
 
     return false;
